@@ -1803,7 +1803,7 @@ const LANDING_HTML = `<!DOCTYPE html>
       <div class="footer-brand">K-LifeGuard</div>
       <p class="footer-sources">Data: 공공데이터포털 (NEMC) · 카카오 모빌리티</p>
       <div class="footer-links">
-        <a href="https://github.com/yonghwan1106" target="_blank" class="footer-link">GitHub</a>
+        <a href="https://github.com/yonghwan1106/k-lifeguard-mcp" target="_blank" class="footer-link">GitHub</a>
         <a href="/mcp" class="footer-link">API Health</a>
       </div>
       <p class="footer-copy">© 2025 K-LifeGuard. Built for emergencies.</p>
