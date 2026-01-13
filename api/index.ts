@@ -337,19 +337,12 @@ async function fetchEmergencyHospitals(
 ): Promise<Hospital[]> {
   const sidoCode = await getSidoCodeFromCoords(latitude, longitude);
 
-  const params = new URLSearchParams({
-    serviceKey: DATA_GO_KR_API_KEY,
-    WGS84_LON: longitude.toString(),
-    WGS84_LAT: latitude.toString(),
-    numOfRows: '50',
-    pageNo: '1'
-  });
+  // serviceKey는 이미 인코딩되어 있으므로 URLSearchParams 사용하지 않음
+  let url = `${NEMC_BASE_URL}/ErmctInfoInqireService/getEgytListInfoInqire?serviceKey=${DATA_GO_KR_API_KEY}&WGS84_LON=${longitude}&WGS84_LAT=${latitude}&numOfRows=50&pageNo=1`;
 
   if (sidoCode) {
-    params.append('STAGE1', sidoCode);
+    url += `&STAGE1=${sidoCode}`;
   }
-
-  const url = `${NEMC_BASE_URL}/ErmctInfoInqireService/getEgytListInfoInqire?${params}`;
 
   try {
     const response = await fetch(url, {
@@ -396,14 +389,8 @@ async function fetchRealTimeBedInfo(hpids: string[]): Promise<Map<string, Partia
 
   for (const batch of batches) {
     const promises = batch.map(async (hpid) => {
-      const params = new URLSearchParams({
-        serviceKey: DATA_GO_KR_API_KEY,
-        HPID: hpid,
-        numOfRows: '1',
-        pageNo: '1'
-      });
-
-      const url = `${NEMC_BASE_URL}/ErmctInfoInqireService/getEmrrmRltmUsefulSckbdInfoInqire?${params}`;
+      // serviceKey는 이미 인코딩되어 있으므로 직접 URL 구성
+      const url = `${NEMC_BASE_URL}/ErmctInfoInqireService/getEmrrmRltmUsefulSckbdInfoInqire?serviceKey=${DATA_GO_KR_API_KEY}&HPID=${hpid}&numOfRows=1&pageNo=1`;
 
       try {
         const response = await fetch(url, {
@@ -445,15 +432,8 @@ async function fetchPharmacies(
   longitude: number,
   radiusKm: number = 3
 ): Promise<Pharmacy[]> {
-  const params = new URLSearchParams({
-    serviceKey: DATA_GO_KR_API_KEY,
-    WGS84_LON: longitude.toString(),
-    WGS84_LAT: latitude.toString(),
-    numOfRows: '50',
-    pageNo: '1'
-  });
-
-  const url = `${NEMC_BASE_URL}/ErmctInsttInfoInqireService/getParmacyListInfoInqire?${params}`;
+  // serviceKey는 이미 인코딩되어 있으므로 직접 URL 구성
+  const url = `${NEMC_BASE_URL}/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=${DATA_GO_KR_API_KEY}&WGS84_LON=${longitude}&WGS84_LAT=${latitude}&numOfRows=50&pageNo=1`;
 
   try {
     const response = await fetch(url, {
