@@ -1,0 +1,31 @@
+{
+  "name": "k-lifeguard-mcp",
+  "version": "1.0.0",
+  "description": "K-LifeGuard: Intelligent Emergency Medical Coordinator MCP Server - 증상 기반 최적 병원 추천, 실시간 ETA, 보호자 알림",
+  "main": "api/index.ts",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "vercel build",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "mcp",
+    "korea",
+    "emergency",
+    "hospital",
+    "lifeguard",
+    "medical",
+    "kakao",
+    "navi"
+  ],
+  "author": "yonghwan1106",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@vercel/node": "^5.0.0",
+    "typescript": "^5.7.0"
+  }
+}
