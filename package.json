@@ -1,6 +1,6 @@
 {
   "name": "k-lifeguard-mcp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "K-LifeGuard: Intelligent Emergency Medical Coordinator MCP Server - 증상 기반 최적 병원 추천, 실시간 ETA, 보호자 알림",
   "main": "api/index.ts",
   "scripts": {
